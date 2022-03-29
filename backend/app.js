@@ -1,13 +1,14 @@
 const express = require('express');
 const { default: mongoose } = require('mongoose');
 const app = express();
-const musicModel = "./models/musicData.js";
 const roueter = require('./routes/main');
+const cors = require('cors')
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
+app.use(cors());
+
 const PORT = 3003;
-
-
 
 app.use("/", roueter)
 
