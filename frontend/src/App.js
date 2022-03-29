@@ -2,7 +2,7 @@ import Musics from "./Pages/Musics";
 
 function App() {
     return (
-        <div className="bg-bg_light-200">
+        <div>
             <Musics />
         </div>
     );

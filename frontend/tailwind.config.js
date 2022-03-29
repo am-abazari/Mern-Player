@@ -6,6 +6,7 @@ module.exports = {
 		extend: {
 			spacing: {
 				'62': '250px',
+				'175': '700px',
 			},
 			colors: {
 				bg_light: {
