@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import exit from "../Images/exit.svg"
 const AddMusic = () => {
     const [name, setName] = useState("")
     const [cover, setCover] = useState("")
@@ -14,13 +17,23 @@ const AddMusic = () => {
                 artist: artist,
                 music: music
             }).then(response => {
-                console.log(response.data);
+                if (response.data.status == 201) {
+                    toast.success("Record Created Successfully ! ", { theme: "dark" })
+                } else {
+                    toast.error("An Error Accord While Submitting Data ! ", { theme: "dark" })
+
+                }
+            }).catch(() => {
+                toast.error("An Error Accord While Submitting Data ! ", { theme: "dark" })
             })
         }
     }
     return (
         <div className='container m-auto p-12 pb-28 '>
-            <h1 className='font-extrabold text-4xl mb-20'>Add Music</h1>
+            <div className="flex justify-between">
+                <h1 className='font-extrabold text-4xl mb-20'>Add Music</h1>
+            <Link to={"/"}><img src={exit}  className='w-7 h-7 mt-4 rotate-180' alt="exit" /></Link>
+            </div>
             <form method='post' action='http://localhost:3003/insert'>
                 <div className="relative z-0 mb-6 w-full group">
                     <input onChange={(e) => {

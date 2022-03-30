@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import AddMusic from "./Pages/AddMusic";
 import Musics from "./Pages/Musics";
-
+import { ToastContainer } from "react-toastify"
 function App() {
     return (
         <>
@@ -10,7 +10,7 @@ function App() {
                 <Route path='/add' element={<AddMusic />} />
 
             </Routes>
-            <ToastContainer rtl
+            <ToastContainer
                 draggable
                 pauseOnHover />
         </>
