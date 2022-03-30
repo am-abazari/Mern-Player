@@ -45,7 +45,11 @@ const Player = ({ children }) => {
     }, [])
 
     useEffect(() => {
-        setIsPlaying(false)
+        setIsPlaying(true)
+        const audio = document.getElementById("audio");
+        audio.addEventListener("loadeddata" , () =>{
+            audio.play()
+        })
         if (children) {
             setMusic(children.music);
             setArtist(children.artist);
@@ -53,9 +57,6 @@ const Player = ({ children }) => {
             setCover(children.cover);
         }
     }, [children])
-
-
-    // const { music, cover, name, artist } = children;
     return (
         <>
             <div className='fixed bottom-0 w-screen h-32 bg-l left-0 right-0 m-auto  bg-white shadow-2xl shadow-gray-900 flex items-center justify-around'>
@@ -97,7 +98,7 @@ const Player = ({ children }) => {
                     </div>
                 </div>
             </div>
-            <audio preload="metadata" src={Music && Music}  controls id='audio' className='hidden'></audio>
+            <audio preload="metadata" src={Music && Music} controls id='audio' className='hidden'></audio>
         </>
     );
 };

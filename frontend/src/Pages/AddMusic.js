@@ -19,6 +19,10 @@ const AddMusic = () => {
             }).then(response => {
                 if (response.data.status == 201) {
                     toast.success("Record Created Successfully ! ", { theme: "dark" })
+                    // setName("")
+                    // setCover("")
+                    // setArtist("")
+                    // setMusic("")
                 } else {
                     toast.error("An Error Accord While Submitting Data ! ", { theme: "dark" })
 
