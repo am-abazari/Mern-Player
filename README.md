@@ -8,7 +8,7 @@ A M.E.R.N  SPA Player
 
 
 
-- [x] React 18.0.0
+- [x] React 17.0.2
 - [x] TailwindCSS v3.0.23
 - [x] Restful API
 - [x] MongoDB
