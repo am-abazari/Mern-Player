@@ -10,6 +10,9 @@ function App() {
                 <Route path='/add' element={<AddMusic />} />
 
             </Routes>
+            <ToastContainer rtl
+                draggable
+                pauseOnHover />
         </>
     );
 }
