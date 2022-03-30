@@ -30,7 +30,7 @@ const Musics = () => {
                 <Link className="text-xl border-b py-6 px-5 text-red-500 border-gray-300 font-bold flex items-center justify-between" to={'#'}><p>Artists</p> <p>{"➣"}</p></Link>
             </div>
             <div className='mt-12'>
-                <h1 className='font-extrabold text-4xl mb-8'>Musics</h1>
+                <h1 className='font-extrabold text-4xl mb-8'>Play List</h1>
                 <div className='flex flex-wrap justify-between'>
                     {musicData.length !== 0 &&
                         musicData.map(music => <MusicItem choose={chooseMusic} key={v4()}>{music}</MusicItem>)

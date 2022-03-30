@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { v4 } from 'uuid';
+import AddMusicItem from '../Components/AddMusicItem';
 import exit from "../Images/exit.svg"
 const AddMusic = () => {
     const [name, setName] = useState("")
@@ -32,11 +34,29 @@ const AddMusic = () => {
             })
         }
     }
+
+    const [addedMusic, setAddedMusic] = useState("") // Spaeter
+    const [LikeMusic, setLikeMusic] = useState("") // Spaeter
+    const [musicData, setMusicData] = useState("");
+
+    const chooseMusic = (name) => { // Getting Data From Child MusicItem
+        setAddedMusic(name);
+    }
+    const likedMusic = (name) => { // Getting Data From Child MusicItem
+        setLikeMusic(name);
+        console.log(name);
+    }
+
+    useEffect(() => {
+        axios.get("http://localhost:3003/").then(response => {
+            setMusicData(response.data);
+        })
+    }, [])
     return (
         <div className='container m-auto p-12 pb-28 '>
             <div className="flex justify-between">
                 <h1 className='font-extrabold text-4xl mb-20'>Add Music</h1>
-            <Link to={"/"}><img src={exit}  className='w-7 h-7 mt-4 rotate-180' alt="exit" /></Link>
+                <Link to={"/"}><img src={exit} className='w-7 h-7 mt-4 rotate-180' alt="exit" /></Link>
             </div>
             <form method='post' action='http://localhost:3003/insert'>
                 <div className="relative z-0 mb-6 w-full group">
@@ -66,6 +86,14 @@ const AddMusic = () => {
 
                 <button onClick={setData} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
             </form>
+
+
+            <div className='mt-24 flex flex-wrap justify-between'>
+                <h1 className='font-extrabold text-4xl mb-20 w-full'>Other Musics</h1>
+                {musicData.length !== 0 &&
+                    musicData.map(music => <AddMusicItem choose={chooseMusic} like={likedMusic} key={v4()}>{music}</AddMusicItem>)
+                }
+            </div>
         </div>
     );
 };

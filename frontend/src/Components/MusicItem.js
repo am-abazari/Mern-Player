@@ -1,7 +1,6 @@
 import React from 'react';
-import { v4 } from "uuid";
 const MusicItem = (props) => {
-    const { name, artist, cover, choose } = props.children
+    const { name, artist, cover } = props.children
     return (
         <button onClick={() => {
             props.choose(props.children) // Passing Data To Parent Musics
