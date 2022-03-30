@@ -11,7 +11,7 @@ const Player = ({ children }) => {
     const [isPlaying, setIsPlaying] = useState(false)
     const [curTime, setCurTime] = useState(0);
     const [audioDuration, setAudioDuration] = useState(0)
-    const [convertedTime, setConvertedTime] = useState(["00","00"])
+    const [convertedTime, setConvertedTime] = useState(["00", "00"])
 
     useEffect(() => {
         const audio = document.getElementById("audio");
@@ -38,13 +38,14 @@ const Player = ({ children }) => {
                 second = "0" + second
             }
             setMusicTime([minute, second]);
-            if(audio.currentTime == audio.duration){
+            if (audio.currentTime == audio.duration) {
                 setIsPlaying(false)
             }
         })
     }, [])
 
     useEffect(() => {
+        setIsPlaying(false)
         if (children) {
             setMusic(children.music);
             setArtist(children.artist);
@@ -59,7 +60,7 @@ const Player = ({ children }) => {
         <>
             <div className='fixed bottom-0 w-screen h-32 bg-l left-0 right-0 m-auto  bg-white shadow-2xl shadow-gray-900 flex items-center justify-around'>
                 <div className='flex items-center absolute left-0 bottom-0'>
-                    <img src={Cover ? Cover : defaultImg } className='h-32 w-32 ' alt="cover" />
+                    <img src={Cover ? Cover : defaultImg} className='h-32 w-32 ' alt="cover" />
                     <div className='ml-4'>
                         <p className='mb-2 font-bold text-lg'>{Artist ? Artist : "Music Player"}</p>
                         <p className='text-gray-600'>{Name ? Name : "Mern Music Player"}</p>
@@ -96,7 +97,7 @@ const Player = ({ children }) => {
                     </div>
                 </div>
             </div>
-            <audio preload="metadata" src={Music && Music} controls id='audio' className='hidden'></audio>
+            <audio preload="metadata" src={Music && Music}  controls id='audio' className='hidden'></audio>
         </>
     );
 };
