@@ -19,5 +19,4 @@ const AddMusicItem = (props) => {
         </div>
     );
 };
-
 export default AddMusicItem;
